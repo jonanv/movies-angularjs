@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, JsonpInterceptor } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
 
 @Injectable({
@@ -13,13 +13,12 @@ export class MoviesService {
 
   constructor(
     private http: HttpClient,
-    private jsonp: JsonpInterceptor
   ) { }
 
   private getQuery() {
     const url = `${ this.urlMoviedb }movie/popular?api_key=${ this.apikey }&language=es-CO&page=1`; //&callback=test
 
-    return this.http.get(url);
+    return this.http.jsonp(url, 'callback=test');
   }
 
   getPopular() {
