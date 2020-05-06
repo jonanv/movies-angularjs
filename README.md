@@ -53,6 +53,24 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ***
 
+# Create component without file css and .spec
+```javascript
+ng generate service services/movies --skipTests
+```
+or
+```javascript
+ng g s services/movies --skipTests
+```
+
+<!-- # Create service without file .spec
+```javascript
+ng generate service services/chat --skipTests
+```
+or
+```javascript
+ng g s services/chat --skipTests -->
+```
+
 # Server local
 install global ```sudo npm i -g http-server```
 
