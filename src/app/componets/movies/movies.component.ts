@@ -13,6 +13,7 @@ import { Movie } from '../../interfaces/movie.interface';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
+  loading: boolean = false;
 
   constructor(
     private moviesService: MoviesService
@@ -24,11 +25,13 @@ export class MoviesComponent implements OnInit {
   }
 
   getPopular() {
+    this.loading = true;
     this.moviesService.getPopular()
       .pipe(first())
       .subscribe((response: Movie[]) => {
         this.movies = response;
         console.log(response);
+        this.loading = false;
       });
   }
 
