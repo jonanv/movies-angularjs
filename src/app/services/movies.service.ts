@@ -16,7 +16,7 @@ export class MoviesService {
   ) { }
 
   private getQuery() {
-    const url = `${ this.urlMoviedb }movie/popular?api_key=${ this.apikey }&language=es-CO&page=1`; //&callback=test
+    const url = `${ this.urlMoviedb }movie/popular?api_key=${ this.apikey }&language=es-CO&page=1`;
 
     return this.http.jsonp(url, 'callback=test');
   }
@@ -24,7 +24,7 @@ export class MoviesService {
   getPopular() {
     return this.getQuery()
       .pipe(map(response => {
-        return response;
+        return response['results'];
       }));
   }
 }
