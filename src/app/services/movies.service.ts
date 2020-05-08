@@ -43,5 +43,6 @@ export class MoviesService {
     //   .pipe(map(response => {
     //     return response;
     //   }));
+    // TODO: Hacer que el servicio sea general con un solo getQuery
   }
 }

@@ -55,6 +55,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Create component without file css and .spec
 ```javascript
+ng generate component component/movies --skipTests
+```
+or
+```javascript
+ng g c component/movies --skipTests
+```
+
+# Create service without file .spec
+```javascript
 ng generate service services/movies --skipTests
 ```
 or
@@ -62,13 +71,13 @@ or
 ng g s services/movies --skipTests
 ```
 
-<!-- # Create service without file .spec
+# Create pipe without file .spec
 ```javascript
-ng generate service services/chat --skipTests
+ng generate pipe pipes/noImage --skipTests
 ```
 or
 ```javascript
-ng g s services/chat --skipTests -->
+ng g p pipes/noImage --skipTests
 ```
 
 # Server local

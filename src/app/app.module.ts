@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 
+// Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './componets/home/home.component';
@@ -12,15 +13,19 @@ import { NavbarComponent } from './componets/navbar/navbar.component';
 import { SearchComponent } from './componets/search/search.component';
 import { LoadingComponent } from './componets/loading/loading.component';
 
+// Pipes
+import { NoImagePipe } from './pipes/no-image.pipe';
+
 @NgModule({
   declarations: [
+    NoImagePipe,
     AppComponent,
     HomeComponent,
     MoviesComponent,
     MovieComponent,
     NavbarComponent,
     SearchComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
