@@ -28,7 +28,7 @@ export class MoviesService {
       }));
   }
 
-  getBillboad() {
+  getBillboard() {
     let dateFrom = new Date();
     let dateTo = new Date();
     dateTo.setDate(dateTo.getDate() + 7);
@@ -38,7 +38,10 @@ export class MoviesService {
     console.log(dateFromStr);
 
     const url = `${ this.urlMoviedb }discover/movie?api_key=${ this.apikey }&language=es-CO&sort_by=popularity.desc&page=1&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
-    return this.http.jsonp(url, 'callback=test');
+    return this.http.jsonp(url, 'callback=test')
+      .pipe(map(response => {
+          return response['results'];
+        }));
     // return this.getQuery()
     //   .pipe(map(response => {
     //     return response;

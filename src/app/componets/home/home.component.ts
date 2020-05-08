@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
+import { Movie } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { first } from 'rxjs/operators';
   ]
 })
 export class HomeComponent implements OnInit {
+
+  bilboard: Movie[];
 
   constructor(
     private moviesService: MoviesService
@@ -20,9 +23,10 @@ export class HomeComponent implements OnInit {
   }
 
   getBillboard() {
-    this.moviesService.getBillboad()
+    this.moviesService.getBillboard()
       .pipe(first())
-      .subscribe(response => {
+      .subscribe((response: Movie[]) => {
+        this.bilboard = response;
         console.log(response);
       });
   }

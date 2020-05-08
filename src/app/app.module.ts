@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 
+// Pipes
+import { NoImagePipe } from './pipes/no-image.pipe';
+
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +16,6 @@ import { NavbarComponent } from './componets/navbar/navbar.component';
 import { SearchComponent } from './componets/search/search.component';
 import { LoadingComponent } from './componets/loading/loading.component';
 
-// Pipes
-import { NoImagePipe } from './pipes/no-image.pipe';
 
 @NgModule({
   declarations: [

@@ -9,11 +9,11 @@
     <h1>Cartelera</h1>
     <hr>
 
-    <div class="row">
+    <div class="row" *ngIf="bilboard">
 
         <div class="col-sm-6">
             <div class="row">
-                <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(http://image.tmdb.org/t/p/w500/2KCj021waxpTBg76s5i2YPEbzla.jpg)'}">
+                <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(' + bilboard | noImage + ')'}">
                 </div>
             </div>
             <div class="row">
