@@ -2,7 +2,7 @@ export interface Page {
   page: number;
   total_results: number;
   total_pages: number;
-  results: Result[];
+  results: Movie[];
 }
 
 export interface Movie {

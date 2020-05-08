@@ -27,4 +27,21 @@ export class MoviesService {
         return response['results'];
       }));
   }
+
+  getBillboad() {
+    let dateFrom = new Date();
+    let dateTo = new Date();
+    dateTo.setDate(dateTo.getDate() + 7);
+
+    let dateFromStr = `${ dateFrom.getFullYear() }-0${ dateFrom.getMonth() + 1 }-0${ dateFrom.getDay() }`;
+    let dateToStr = `${ dateTo.getFullYear() }-0${ dateTo.getMonth() + 1 }-0${ dateTo.getDay() }`;
+    console.log(dateFromStr);
+
+    const url = `${ this.urlMoviedb }discover/movie?api_key=${ this.apikey }&language=es-CO&sort_by=popularity.desc&page=1&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
+    return this.http.jsonp(url, 'callback=test');
+    // return this.getQuery()
+    //   .pipe(map(response => {
+    //     return response;
+    //   }));
+  }
 }
