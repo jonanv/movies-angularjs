@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Imports
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 // Pipes
 import { NoImagePipe } from './pipes/no-image.pipe';
@@ -34,7 +36,8 @@ import { GaleryComponent } from './components/home/galery/galery.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
