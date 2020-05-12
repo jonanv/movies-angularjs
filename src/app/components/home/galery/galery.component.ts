@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from '../../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-galery',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class GaleryComponent implements OnInit {
+
+  @Input('movies') movies: Movie[];
+  @Input('title') title: string;
 
   constructor() { }
 

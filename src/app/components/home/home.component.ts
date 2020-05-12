@@ -13,6 +13,8 @@ import { Movie } from '../../interfaces/movie.interface';
 export class HomeComponent implements OnInit {
 
   bilboard: Movie[];
+  populars: Movie[];
+  popularsChildren: Movie[];
 
   constructor(
     private moviesService: MoviesService
@@ -20,6 +22,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBillboard();
+    this.getPopular();
+    this.getPopularChildren();
   }
 
   getBillboard() {
@@ -28,6 +32,22 @@ export class HomeComponent implements OnInit {
       .subscribe((response: Movie[]) => {
         this.bilboard = response;
         console.log(response);
+      });
+  }
+
+  getPopular() {
+    this.moviesService.getPopular()
+      .pipe(first())
+      .subscribe((response: Movie[]) => {
+        this.populars = response;
+      });
+  }
+
+  getPopularChildren() {
+    this.moviesService.getPopularClildren()
+      .pipe(first())
+      .subscribe((response: Movie[]) => {
+        this.popularsChildren = response;
       });
   }
 

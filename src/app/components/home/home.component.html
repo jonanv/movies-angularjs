@@ -6,35 +6,11 @@
 </div>
 
 <div class="container">
-    <h1>Cartelera</h1>
-    <hr>
 
-    <div class="row" *ngIf="bilboard">
+    <app-galery [movies]="bilboard | slice:0:6" title="Películas en cartelera"></app-galery>
 
-        <div class="col-sm-6">
-            <div class="row">
-                <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(' + [bilboard[0] | noImage] + ')'}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [bilboard[1] | noImage] + ')'}">
-                </div>
-                <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [bilboard[2] | noImage] + ')'}">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [bilboard[3] | noImage] + ')'}">
-                </div>
-                <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [bilboard[4] | noImage] + ')'}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(' + [bilboard[5] | noImage] + ')'}">
-                </div>
-            </div>
-        </div>
+    <app-galery [movies]="populars | slice:0:6" title="Películas populares"></app-galery>
 
-    </div>
+    <app-galery [movies]="popularsChildren | slice:0:6" title="Películas populares para niños"></app-galery>
+
 </div>

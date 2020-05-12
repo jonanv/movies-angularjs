@@ -1,1 +1,33 @@
-<p>galery works!</p>
+<br>
+
+<h1>{{ title }}</h1>
+<hr>
+
+<div class="row animated fadeIn fast m-0 p-0" *ngIf="movies">
+
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(' + [movies[0] | noImage] + ')'}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [movies[1] | noImage] + ')'}">
+            </div>
+            <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [movies[2] | noImage] + ')'}">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [movies[3] | noImage] + ')'}">
+            </div>
+            <div class="col-sm-6 div-pic-2" [ngStyle]="{'background-image': 'url(' + [movies[4] | noImage] + ')'}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 div-pic-1" [ngStyle]="{'background-image': 'url(' + [movies[5] | noImage] + ')'}">
+            </div>
+        </div>
+    </div>
+
+</div>
