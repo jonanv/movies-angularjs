@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
+import { Movie } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +12,7 @@ import { first } from 'rxjs/operators';
 export class SearchComponent implements OnInit {
 
   search: string = "";
+  movies: Movie[];
 
   constructor(
     public moviesService: MoviesService
@@ -27,7 +29,7 @@ export class SearchComponent implements OnInit {
     this.moviesService.getSearchMovie(this.search)
       .pipe(first())
       .subscribe(response => {
-        console.log(response);
+        this.movies = response;
       });
   }
 }
