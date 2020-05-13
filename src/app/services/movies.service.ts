@@ -16,14 +16,14 @@ export class MoviesService {
     private http: HttpClient,
   ) { }
 
-  private getQuery(query: string) {
-    const url = `${ this.urlMoviedb }discover/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ query }`;
+  private getQuery(query: string, subquery: string) {
+    const url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
     return this.http.jsonp(url, 'callback=test');
   }
 
   getPopular() {
     let query = `&sort_by=popularity.desc&include_adult=false&include_video=false`;
-    return this.getQuery(query)
+    return this.getQuery('discover', query)
       .pipe(map(response => {
         return response['results'];
       }));
@@ -31,7 +31,7 @@ export class MoviesService {
 
   getPopularClildren() {
     let query = `&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=12%2C16%2C35%2C10751`;
-    return this.getQuery(query)
+    return this.getQuery('discover', query)
       .pipe(map(response => {
         return response['results'];
       }));
@@ -47,10 +47,18 @@ export class MoviesService {
     let dateToStr = this.getDate(dateTo);
 
     let query = `&sort_by=popularity.desc&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
-    return this.getQuery(query)
+    return this.getQuery('discover', query)
       .pipe(map(response => {
           return response['results'];
         }));
+  }
+
+  getSearchMovie(search: string) {
+    let query = `&query=${ search }`;
+    return this.getQuery('search' ,query)
+      .pipe(map(response => {
+        return response['results'];
+      }));
   }
 
   private getDate(date: Date): string {
