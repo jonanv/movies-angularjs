@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
-import { Movie } from '../../interfaces/movie.interface';
+import { Bilboard } from '../../interfaces/movie.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   search: string = "";
-  movies: Movie[];
+  movies: Bilboard[];
   loading: boolean;
 
   constructor(
@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
     this.loading = true;
     this.moviesService.getSearchMovie(this.search)
       .pipe(first())
-      .subscribe((response: Movie[]) => {
+      .subscribe((response: Bilboard[]) => {
         this.movies = response;
         this.loading = false;
       });

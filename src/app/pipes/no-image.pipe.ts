@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Movie, CompleteMovie } from '../interfaces/movie.interface';
 
 @Pipe({
   name: 'noImage'

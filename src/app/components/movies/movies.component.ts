@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
-import { Movie } from '../../interfaces/movie.interface';
+import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-movies',
@@ -12,7 +12,7 @@ import { Movie } from '../../interfaces/movie.interface';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Movie[] = [];
+  movies: Bilboard[] = [];
   loading: boolean = false;
 
   constructor(
@@ -28,7 +28,7 @@ export class MoviesComponent implements OnInit {
     this.loading = true;
     this.moviesService.getPopular()
       .pipe(first())
-      .subscribe((response: Movie[]) => {
+      .subscribe((response: Bilboard[]) => {
         this.movies = response;
         console.log(response);
         this.loading = false;

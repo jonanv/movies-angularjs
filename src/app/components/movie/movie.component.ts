@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CompleteMovie } from '../../interfaces/movie.interface';
+import { Movie } from '../../interfaces/movie.interface';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class MovieComponent implements OnInit {
   id: number;
   page: string;
   search: string;
-  movie: CompleteMovie;
+  movie: Movie;
   loading: boolean;
 
   constructor(
@@ -44,7 +44,7 @@ export class MovieComponent implements OnInit {
     this.loading = true;
     this.moviesService.getMovie(this.id)
       .pipe(first())
-      .subscribe((response: CompleteMovie) => {
+      .subscribe((response: Movie) => {
         // console.log(response);
         this.movie = response;
         this.loading = false;

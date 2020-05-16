@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
-import { Movie } from '../../interfaces/movie.interface';
+import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +12,9 @@ import { Movie } from '../../interfaces/movie.interface';
 })
 export class HomeComponent implements OnInit {
 
-  bilboard: Movie[];
-  populars: Movie[];
-  popularsChildren: Movie[];
+  bilboard: Bilboard[];
+  populars: Bilboard[];
+  popularsChildren: Bilboard[];
   loading: boolean;
 
   constructor(
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.moviesService.getBillboard()
       .pipe(first())
-      .subscribe((response: Movie[]) => {
+      .subscribe((response: Bilboard[]) => {
         this.bilboard = response;
         this.loading = false;
       });
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.moviesService.getPopular()
       .pipe(first())
-      .subscribe((response: Movie[]) => {
+      .subscribe((response: Bilboard[]) => {
         this.populars = response;
         this.loading = false;
       });
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.moviesService.getPopularClildren()
       .pipe(first())
-      .subscribe((response: Movie[]) => {
+      .subscribe((response: Bilboard[]) => {
         this.popularsChildren = response;
         this.loading = false;
       });

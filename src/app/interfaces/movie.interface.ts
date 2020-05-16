@@ -2,10 +2,10 @@ export interface Page {
   page: number;
   total_results: number;
   total_pages: number;
-  results: Movie[];
+  results: Bilboard[];
 }
 
-export interface Movie {
+export interface Bilboard {
   popularity: number;
   vote_count: number;
   video: boolean;
@@ -22,7 +22,7 @@ export interface Movie {
   release_date: string;
 }
 
-export interface CompleteMovie {
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection?: any;
