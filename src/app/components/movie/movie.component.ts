@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CompleteMovie } from '../../interfaces/movie.interface';
 import { MoviesService } from '../../services/movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -15,16 +15,23 @@ export class MovieComponent implements OnInit {
 
   id: number;
   page: string;
+  search: string;
   movie: CompleteMovie;
 
   constructor(
     private moviesService: MoviesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.activatedRoute.params
       .subscribe(response => {
         this.id = response['id'];
         this.page = response['page'];
+
+        if(response['search']) {
+          this.search = response['search'];
+        }
+
         this.loadMovie();
         console.log(response);
       });
@@ -40,6 +47,10 @@ export class MovieComponent implements OnInit {
         console.log(response);
         this.movie = response;
       });
+  }
+
+  returnPage() {
+    this.router.navigate(['/'+ this.page, this.search]);
   }
 
 }

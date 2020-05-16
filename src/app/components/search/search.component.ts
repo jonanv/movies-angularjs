@@ -46,7 +46,6 @@ export class SearchComponent implements OnInit {
   }
 
   showMovie(id: number) {
-    console.log(id);
-    // this.router.navigate(['/movie', id]);
+    this.router.navigate(['/movie', id, 'search', this.search]);
   }
 }

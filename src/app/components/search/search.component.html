@@ -9,14 +9,16 @@
         </div>
     </div>
 
-    <div class="card-columns">
-        <div class="card animated fadeIn fast" *ngFor="let movie of movies">
-            <!-- TODO: Controlar cuando no tiene imagen con pipe de imagen o con otro pipe -->
-            <img [src]="movie | noImage" class="card-img-top img-fluid" [alt]="movie.original_title">
-            <div class="card-body">
-                <h5 class="card-title">{{ movie.title }}</h5>
-                <p class="card-text text-justify">{{ movie.overview | slice:0:250 }}...</p>
-                <button class="btn btn-outline-primary btn-block" (click)="showMovie(movie.id)">Ver más...</button>
+    <div class="row m-0 p-0 animated fadeIn fast">
+        <div class="card-columns">
+            <div class="card" *ngFor="let movie of movies">
+                <!-- TODO: Controlar cuando no tiene imagen con pipe de imagen o con otro pipe -->
+                <img [src]="movie | noImage" class="card-img-top img-fluid" [alt]="movie.original_title">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-justify">{{ movie.overview | slice:0:250 }}...</p>
+                    <button class="btn btn-outline-primary btn-block" (click)="showMovie(movie.id)">Ver más...</button>
+                </div>
             </div>
         </div>
     </div>

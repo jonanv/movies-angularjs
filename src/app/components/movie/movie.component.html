@@ -19,7 +19,7 @@
             <p>Popularidad: <span class="badge badge-primary">{{ movie.popularity }}</span></p>
             <p>Votos promedio: <span class="badge badge-primary">{{ movie.vote_average }}</span></p>
 
-            <button class="btn btn-outline-danger" type="button" [routerLink]="['/'+page]">
+            <button class="btn btn-outline-danger" type="button" (click)="returnPage()">
               Regresar
             </button>
         </div>
