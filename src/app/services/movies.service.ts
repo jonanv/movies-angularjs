@@ -22,16 +22,16 @@ export class MoviesService {
   }
 
   getPopular() {
-    let query = `&sort_by=popularity.desc&include_adult=false&include_video=false`;
-    return this.getQuery('discover', query)
+    let subquery = `&sort_by=popularity.desc&include_adult=false&include_video=false`;
+    return this.getQuery('discover', subquery)
       .pipe(map(response => {
         return response['results'];
       }));
   }
 
   getPopularClildren() {
-    let query = `&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=12%2C16%2C35%2C10751`;
-    return this.getQuery('discover', query)
+    let subquery = `&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=12%2C16%2C35%2C10751`;
+    return this.getQuery('discover', subquery)
       .pipe(map(response => {
         return response['results'];
       }));
@@ -46,16 +46,16 @@ export class MoviesService {
     let dateFromStr = this.getDate(dateFrom);
     let dateToStr = this.getDate(dateTo);
 
-    let query = `&sort_by=popularity.desc&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
-    return this.getQuery('discover', query)
+    let subquery = `&sort_by=popularity.desc&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
+    return this.getQuery('discover', subquery)
       .pipe(map(response => {
           return response['results'];
         }));
   }
 
   getSearchMovie(search: string) {
-    let query = `&query=${ search }`;
-    return this.getQuery('search' ,query)
+    let subquery = `&query=${ search }`;
+    return this.getQuery('search', subquery)
       .pipe(map(response => {
         return response['results'];
       }));
