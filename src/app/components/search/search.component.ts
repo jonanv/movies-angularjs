@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
 import { Movie } from '../../interfaces/movie.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +18,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     public moviesService: MoviesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.activatedRoute.params
       .subscribe(response => {
@@ -42,5 +43,10 @@ export class SearchComponent implements OnInit {
       .subscribe(response => {
         this.movies = response;
       });
+  }
+
+  showMovie(id: number) {
+    console.log(id);
+    // this.router.navigate(['/movie', id]);
   }
 }

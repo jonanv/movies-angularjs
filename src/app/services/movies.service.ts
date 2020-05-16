@@ -17,7 +17,13 @@ export class MoviesService {
   ) { }
 
   private getQuery(query: string, subquery: string) {
-    const url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
+    let url = '';
+    if(query === 'movie') {
+      url = `${ this.urlMoviedb }${ query }/${ subquery }?api_key=${ this.apikey }&language=${ this.language }`;
+    }
+    else {
+      url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
+    }
     return this.http.jsonp(url, 'callback=test');
   }
 
@@ -75,6 +81,14 @@ export class MoviesService {
     return this.getQuery('search', subquery)
       .pipe(map(response => {
         return response['results'];
+      }));
+  }
+
+  getMovie(id: number) {
+    let subquery = `${ id }`;
+    return this.getQuery('movie', subquery)
+      .pipe(map(response => {
+        return response;
       }));
   }
 }
