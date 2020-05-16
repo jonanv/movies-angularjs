@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'search/:text', component: SearchComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

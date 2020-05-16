@@ -21,6 +21,23 @@ export class MoviesService {
     return this.http.jsonp(url, 'callback=test');
   }
 
+  private getDate(date: Date): string {
+    let year = date.getFullYear().toString();
+    let month = (date.getMonth() + 1).toString();
+    let day = date.getDate().toString();
+
+    if(month.length < 2) {
+      month = '0' + month;
+    }
+
+    if(day.length < 2) {
+      day = '0' + day;
+    }
+
+    let newDate = year + '-' + month + '-' + day;
+    return newDate;
+  }
+
   getPopular() {
     let subquery = `&sort_by=popularity.desc&include_adult=false&include_video=false`;
     return this.getQuery('discover', subquery)
@@ -59,22 +76,5 @@ export class MoviesService {
       .pipe(map(response => {
         return response['results'];
       }));
-  }
-
-  private getDate(date: Date): string {
-    let year = date.getFullYear().toString();
-    let month = (date.getMonth() + 1).toString();
-    let day = date.getDate().toString();
-
-    if(month.length < 2) {
-      month = '0' + month;
-    }
-
-    if(day.length < 2) {
-      day = '0' + day;
-    }
-
-    let newDate = year + '-' + month + '-' + day;
-    return newDate;
   }
 }
