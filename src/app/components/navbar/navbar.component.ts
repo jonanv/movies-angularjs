@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   searchMovie(text: string) {
-    console.log(text);
+    // console.log(text);
     if (text.length === 0) {
       return;
     }

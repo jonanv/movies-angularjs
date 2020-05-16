@@ -5,7 +5,11 @@
     </div>
 </div>
 
-<div class="container">
+<div *ngIf="loading" class="container">
+    <app-loading></app-loading>
+</div>
+
+<div *ngIf="!loading" class="container">
 
     <app-galery [movies]="bilboard | slice:0:6" title="Películas en cartelera"></app-galery>
 

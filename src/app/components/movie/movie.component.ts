@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { CompleteMovie } from '../../interfaces/movie.interface';
 import { MoviesService } from '../../services/movies.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -17,11 +17,11 @@ export class MovieComponent implements OnInit {
   page: string;
   search: string;
   movie: CompleteMovie;
+  loading: boolean;
 
   constructor(
     private moviesService: MoviesService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
   ) {
     this.activatedRoute.params
       .subscribe(response => {
@@ -33,7 +33,7 @@ export class MovieComponent implements OnInit {
         }
 
         this.loadMovie();
-        console.log(response);
+        // console.log(response);
       });
   }
 
@@ -41,16 +41,14 @@ export class MovieComponent implements OnInit {
   }
 
   loadMovie() {
+    this.loading = true;
     this.moviesService.getMovie(this.id)
       .pipe(first())
       .subscribe((response: CompleteMovie) => {
-        console.log(response);
+        // console.log(response);
         this.movie = response;
+        this.loading = false;
       });
-  }
-
-  returnPage() {
-    this.router.navigate(['/'+ this.page, this.search]);
   }
 
 }

@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
 
   search: string = "";
   movies: Movie[];
+  loading: boolean;
 
   constructor(
     public moviesService: MoviesService,
@@ -38,10 +39,12 @@ export class SearchComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     this.moviesService.getSearchMovie(this.search)
       .pipe(first())
       .subscribe((response: Movie[]) => {
         this.movies = response;
+        this.loading = false;
       });
   }
 

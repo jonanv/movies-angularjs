@@ -1,4 +1,8 @@
-<div *ngIf="movie" class="container main-container animated fadeIn fast">
+<div *ngIf="loading" class="container">
+    <app-loading></app-loading>
+</div>
+
+<div *ngIf="movie && !loading" class="container main-container animated fadeIn fast">
 
     <h1>{{ movie.original_title }}</h1>
 
@@ -19,7 +23,7 @@
             <p>Popularidad: <span class="badge badge-primary">{{ movie.popularity }}</span></p>
             <p>Votos promedio: <span class="badge badge-primary">{{ movie.vote_average }}</span></p>
 
-            <button class="btn btn-outline-danger" type="button" (click)="returnPage()">
+            <button class="btn btn-outline-danger" type="button" [routerLink]="['/' + page, search]">
               Regresar
             </button>
         </div>
