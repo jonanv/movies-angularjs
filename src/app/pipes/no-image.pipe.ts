@@ -1,13 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Movie } from '../interfaces/movie.interface';
+import { Movie, CompleteMovie } from '../interfaces/movie.interface';
 
 @Pipe({
   name: 'noImage'
 })
 export class NoImagePipe implements PipeTransform {
 
-  transform(movie: Movie): unknown {
+  // TODO: Toco volver any para recibir cualquer tipo
+  transform(movie: any, poster: boolean = false): unknown {
     let url = "http://image.tmdb.org/t/p/w500";
+
+    if (poster) {
+      return url + movie.poster_path;
+    }
 
     if (movie.backdrop_path) {
       return url + movie.backdrop_path;

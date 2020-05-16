@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
 
     this.moviesService.getSearchMovie(this.search)
       .pipe(first())
-      .subscribe(response => {
+      .subscribe((response: Movie[]) => {
         this.movies = response;
       });
   }
