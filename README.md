@@ -83,7 +83,7 @@ ng g p pipes/noImage --skipTests
 # Server local
 install global ```sudo npm i -g http-server```
 
-deploy in ```/firechat-angularjs/dist/firechat-angularjs/```
+deploy in ```/movies-angularjs/dist/movies-angularjs/```
 
 ```javascript
 http-server
