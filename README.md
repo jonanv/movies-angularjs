@@ -8,7 +8,7 @@
 [![License][license-badge]][license-url]
 
 # Site
-<!-- ![movies angularjs](https://i.imgur.com/JhLbZbf.png) -->
+![movies angularjs](https://i.imgur.com/QZgwkql.png)
 
 # Install dependences
 in ```movies-angularjs/```
