@@ -11,10 +11,16 @@
 
 <div *ngIf="!loading" class="container">
 
-    <app-galery [movies]="bilboard | slice:0:6" title="Películas en cartelera"></app-galery>
+    <app-galery [movies]="bilboard | slice:0:6"
+      title="Películas en cartelera">
+    </app-galery>
 
-    <app-galery [movies]="populars | slice:0:6" title="Películas populares"></app-galery>
+    <app-galery [movies]="populars | slice:0:6"
+      title="Películas populares">
+    </app-galery>
 
-    <app-galery [movies]="popularsChildren | slice:0:6" title="Películas populares para niños"></app-galery>
+    <app-galery [movies]="popularsChildren | slice:0:6"
+      title="Películas populares para niños">
+    </app-galery>
 
 </div>
