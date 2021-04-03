@@ -16,20 +16,21 @@
       </app-slideshow>
     </ng-container>
 
-    <app-movies-poster-grid
-      [movies]="populars">
-    </app-movies-poster-grid>
+    <ng-container *ngIf="populars">
+      <app-movies-poster-grid [movies]="populars">
+      </app-movies-poster-grid>
+    </ng-container>
 
     <app-galery [movies]="bilboard | slice:0:6"
-      title="Películas en cartelera">
+                title="Películas en cartelera">
     </app-galery>
 
     <app-galery [movies]="populars | slice:0:6"
-      title="Películas populares">
+                title="Películas populares">
     </app-galery>
 
     <app-galery [movies]="popularsChildren | slice:0:6"
-      title="Películas populares para niños">
+                title="Películas populares para niños">
     </app-galery>
 
 </div>
