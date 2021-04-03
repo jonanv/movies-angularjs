@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   bilboard: Bilboard[];
   populars: Bilboard[];
   popularsChildren: Bilboard[];
-  loading: boolean;
+  loading: boolean = false;
 
   constructor(
     private moviesService: MoviesService

@@ -3,14 +3,19 @@
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <div class="swiper-slide">
+
+    <div class="swiper-slide"
+      *ngFor="let movie of movies"
+      [ngStyle]="{
+          'background-size': 'cover',
+          'background-image': 'url(' + [movie | noImage] + ')'
+      }">
       <div class="movie-description">
-        <h3>Mulan</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, soluta vel at velit repudiandae tenetur sunt alias excepturi suscipit repellat aperiam illo ab quos tempore iure eum quod necessitatibus nostrum.
-        </p>
+        <h3>{{ movie.title }}</h3>
+        <p>{{ movie.overview | slice:0:130 }}...</p>
       </div>
     </div>
+
   </div>
   <!-- If we need pagination -->
   <div class="swiper-pagination"></div>
@@ -18,7 +23,4 @@
   <!-- If we need navigation buttons -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
-
-  <!-- If we need scrollbar -->
-  <div class="swiper-scrollbar"></div>
 </div>

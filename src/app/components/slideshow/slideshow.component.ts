@@ -1,7 +1,8 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
 // Imports
 import Swiper from 'swiper';
+import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-slideshow',
@@ -9,14 +10,17 @@ import Swiper from 'swiper';
   styles: [
   ]
 })
-export class SlideshowComponent implements OnInit, AfterContentInit {
+export class SlideshowComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  @Input() public movies: Bilboard[];
+
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.movies);
   }
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     //Called after ngOnInit when the component's or directive's content has been initialized.
     //Add 'implements AfterContentInit' to the class.
     const swiper = new Swiper('.swiper-container', {
