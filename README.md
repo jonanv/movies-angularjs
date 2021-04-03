@@ -115,7 +115,7 @@ http-server -o
 [npm-url]: https://www.npmjs.com
 [node-badge]: https://img.shields.io/badge/nodejs-v14.16.0-brightgreen
 [node-url]: https://nodejs.org/download/release/v12.16.1/
-[angular-badge]: https://img.shields.io/badge/angular--CLI-11.2.7-brightgreen
+[angular-badge]: https://img.shields.io/badge/angular--CLI-11.2.4-brightgreen
 [angular-url]: https://angular.io/cli/
 [license-badge]: https://img.shields.io/badge/license-MIT-green.svg
 [license-url]: https://opensource.org/licenses/MIT

@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 // Imports
 import { RouterModule } from '@angular/router';
 
+// Pipes
+import { NoImagePipe } from '../pipes/no-image.pipe';
+
 // Components
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { GaleryComponent } from './galery/galery.component';
-
-// Pipes
-import { NoImagePipe } from '../pipes/no-image.pipe';
+import { SlideshowComponent } from './slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NoImagePipe } from '../pipes/no-image.pipe';
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,
+    SlideshowComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { NoImagePipe } from '../pipes/no-image.pipe';
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,
+    SlideshowComponent
   ]
 })
 export class ComponentsModule { }

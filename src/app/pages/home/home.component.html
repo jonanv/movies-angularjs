@@ -11,6 +11,8 @@
 
 <div *ngIf="!loading" class="container">
 
+    <app-slideshow></app-slideshow>
+
     <app-galery [movies]="bilboard | slice:0:6"
       title="Películas en cartelera">
     </app-galery>
