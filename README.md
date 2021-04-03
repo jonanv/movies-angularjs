@@ -25,7 +25,7 @@ yarn install
 
 # MoviesAngularjs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
 
 ## Development server
 
@@ -49,7 +49,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ***
 
@@ -102,11 +102,11 @@ or
 http-server -o
 ```
 
-[npm-badge]: https://img.shields.io/badge/npm-v6.14.4-brightgreen
+[npm-badge]: https://img.shields.io/badge/npm-v7.7.6-brightgreen
 [npm-url]: https://www.npmjs.com
-[node-badge]: https://img.shields.io/badge/nodejs-v12.16.1-brightgreen
+[node-badge]: https://img.shields.io/badge/nodejs-v14.16.0-brightgreen
 [node-url]: https://nodejs.org/download/release/v12.16.1/
-[angular-badge]: https://img.shields.io/badge/angular--CLI-v9.1.0-brightgreen
+[angular-badge]: https://img.shields.io/badge/angular--CLI-11.2.7-brightgreen
 [angular-url]: https://angular.io/cli/
 [license-badge]: https://img.shields.io/badge/license-MIT-green.svg
 [license-url]: https://opensource.org/licenses/MIT
