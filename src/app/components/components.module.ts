@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { GaleryComponent } from './galery/galery.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
+import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-grid.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    MoviesPosterGridComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,
-    SlideshowComponent
+    SlideshowComponent,
+    MoviesPosterGridComponent
   ]
 })
 export class ComponentsModule { }

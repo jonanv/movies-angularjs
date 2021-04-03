@@ -16,6 +16,9 @@
       </app-slideshow>
     </ng-container>
 
+    <app-movies-poster-grid
+      [movies]="populars">
+    </app-movies-poster-grid>
 
     <app-galery [movies]="bilboard | slice:0:6"
       title="Películas en cartelera">
