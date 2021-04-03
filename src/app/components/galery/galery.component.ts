@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+// Imports
 import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
@@ -10,8 +11,8 @@ import { Bilboard } from '../../interfaces/movie.interface';
 })
 export class GaleryComponent implements OnInit {
 
-  @Input('movies') movies: Bilboard[];
-  @Input('title') title: string;
+  @Input() public movies: Bilboard[];
+  @Input() public title: string;
 
   constructor() { }
 

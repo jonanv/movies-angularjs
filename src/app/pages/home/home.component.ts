@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.getPopularChildren();
   }
 
-  getBillboard() {
+  private getBillboard(): void {
     this.loading = true;
     this.moviesService.getBillboard()
       .pipe(first())
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  getPopular() {
+  private getPopular(): void {
     this.loading = true;
     this.moviesService.getPopular()
       .pipe(first())
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  getPopularChildren() {
+  private getPopularChildren(): void {
     this.loading = true;
     this.moviesService.getPopularClildren()
       .pipe(first())

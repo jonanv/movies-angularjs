@@ -13,9 +13,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  search: string = "";
-  movies: Bilboard[];
-  loading: boolean;
+  public search: string = "";
+  public movies: Bilboard[];
+  public loading: boolean = false;
 
   constructor(
     public moviesService: MoviesService,
@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchMovie() {
+  public searchMovie(): void {
     if (this.search.length === 0) {
       return;
     }
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  showMovie(id: number) {
+  public showMovie(id: number): void {
     this.router.navigate(['/movie', id, 'search', this.search]);
   }
 }

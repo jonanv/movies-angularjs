@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  searchMovie(text: string) {
+  public searchMovie(text: string): void {
     // console.log(text);
     if (text.length === 0) {
       return;

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { Bilboard, Movie } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class MoviesService {
     private http: HttpClient,
   ) { }
 
-  private getQuery(query: string, subquery: string) {
+  private getQuery(query: string, subquery: string): Observable<Object> {
     let url = '';
     if(query === 'movie') {
       url = `${ this.urlMoviedb }${ query }/${ subquery }?api_key=${ this.apikey }&language=${ this.language }`;
@@ -24,7 +26,7 @@ export class MoviesService {
     else {
       url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
     }
-    return this.http.jsonp(url, 'callback=test');
+    return this.http.jsonp<Observable<Object>>(url, 'callback=test');
   }
 
   private getDate(date: Date): string {
@@ -44,24 +46,23 @@ export class MoviesService {
     return newDate;
   }
 
-  getPopular() {
+  public getPopular(): Observable<Bilboard[]> {
     let subquery = `&sort_by=popularity.desc&include_adult=false&include_video=false`;
     return this.getQuery('discover', subquery)
-      .pipe(map(response => {
+      .pipe(map((response: Bilboard[]) => {
         return response['results'];
       }));
   }
 
-  getPopularClildren() {
+  public getPopularClildren(): Observable<Bilboard[]> {
     let subquery = `&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=12%2C16%2C35%2C10751`;
     return this.getQuery('discover', subquery)
-      .pipe(map(response => {
+      .pipe(map((response: Bilboard[]) => {
         return response['results'];
       }));
   }
 
-
-  getBillboard() {
+  public getBillboard(): Observable<Bilboard[]> {
     let dateFrom = new Date();
     let dateTo = new Date();
     dateTo.setDate(dateTo.getDate() + 7);
@@ -71,23 +72,23 @@ export class MoviesService {
 
     let subquery = `&sort_by=popularity.desc&release_date.gte=${ dateFromStr }&release_date.lte=${ dateToStr }`;
     return this.getQuery('discover', subquery)
-      .pipe(map(response => {
+      .pipe(map((response: Bilboard[]) => {
           return response['results'];
         }));
   }
 
-  getSearchMovie(search: string) {
+  public getSearchMovie(search: string): Observable<Bilboard[]> {
     let subquery = `&query=${ search }`;
     return this.getQuery('search', subquery)
-      .pipe(map(response => {
+      .pipe(map((response: Bilboard[]) => {
         return response['results'];
       }));
   }
 
-  getMovie(id: number) {
+  public getMovie(id: number): Observable<Movie> {
     let subquery = `${ id }`;
     return this.getQuery('movie', subquery)
-      .pipe(map(response => {
+      .pipe(map((response: Movie) => {
         return response;
       }));
   }

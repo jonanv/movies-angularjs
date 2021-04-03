@@ -12,8 +12,8 @@ import { Bilboard } from '../../interfaces/movie.interface';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Bilboard[] = [];
-  loading: boolean = false;
+  public movies: Bilboard[] = [];
+  public loading: boolean = false;
 
   constructor(
     private moviesService: MoviesService
@@ -24,7 +24,7 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPopular() {
+  private getPopular(): void {
     this.loading = true;
     this.moviesService.getPopular()
       .pipe(first())

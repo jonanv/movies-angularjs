@@ -13,11 +13,11 @@ import { first } from 'rxjs/operators';
 })
 export class MovieComponent implements OnInit {
 
-  id: number;
-  page: string;
-  search: string;
-  movie: Movie;
-  loading: boolean;
+  private id: number;
+  private page: string;
+  private search: string;
+  public movie: Movie;
+  public loading: boolean = false;
 
   constructor(
     private moviesService: MoviesService,
@@ -40,7 +40,7 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loadMovie() {
+  private loadMovie(): void {
     this.loading = true;
     this.moviesService.getMovie(this.id)
       .pipe(first())
