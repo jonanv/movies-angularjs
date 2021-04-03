@@ -10,7 +10,7 @@
           'background-size': 'cover',
           'background-image': 'url(' + [movie | noImage] + ')'
       }">
-      <div class="movie-description">
+      <div class="movie-description text-white">
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.overview | slice:0:130 }}...</p>
       </div>
@@ -21,6 +21,10 @@
   <div class="swiper-pagination"></div>
 
   <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"
+    (click)="onSlidePrevious()">
+  </div>
+  <div class="swiper-button-next"
+    (click)="onSlideNext()">
+  </div>
 </div>

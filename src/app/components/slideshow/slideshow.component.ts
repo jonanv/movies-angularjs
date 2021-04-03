@@ -13,6 +13,7 @@ import { Bilboard } from '../../interfaces/movie.interface';
 export class SlideshowComponent implements OnInit, AfterViewInit {
 
   @Input() public movies: Bilboard[];
+  private swiper: Swiper;
 
   constructor() {}
 
@@ -23,10 +24,18 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     //Called after ngOnInit when the component's or directive's content has been initialized.
     //Add 'implements AfterContentInit' to the class.
-    const swiper = new Swiper('.swiper-container', {
+    this.swiper = new Swiper('.swiper-container', {
       // Optional parameters
       loop: true,
     });
+  }
+
+  public onSlideNext(): void {
+    this.swiper.slideNext();
+  }
+
+  public onSlidePrevious(): void {
+    this.swiper.slidePrev();
   }
 
 }
