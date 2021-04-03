@@ -71,6 +71,15 @@ or
 ng g s services/movies --skipTests
 ```
 
+# Create interface (add at file name '.interface.ts')
+```javascript
+ng generate interface interfaces/movie
+```
+or
+```javascript
+ng g i interfaces/movie
+```
+
 # Create pipe without file .spec
 ```javascript
 ng generate pipe pipes/noImage --skipTests
