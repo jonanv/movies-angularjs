@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { MoviesComponent } from './components/movies/movies.component';
-import { SearchComponent } from './components/search/search.component';
-import { MovieComponent } from './components/movie/movie.component';
+import { HomeComponent } from './pages/home/home.component';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { SearchComponent } from './pages/search/search.component';
+import { MovieComponent } from './pages/movie/movie.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

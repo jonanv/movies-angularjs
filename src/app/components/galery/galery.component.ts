@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Bilboard } from '../../../interfaces/movie.interface';
+import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-galery',

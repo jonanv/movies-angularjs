@@ -55,20 +55,29 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Create component without file css and .spec
 ```javascript
-ng generate component component/movies --skipTests
+ng generate component component/movies --skip-tests
 ```
 or
 ```javascript
-ng g c component/movies --skipTests
+ng g c component/movies --skip-tests
+```
+
+# Create module in folder components (--flat (--flat Create the new files at the top level of the current project root.))
+```javascript
+ng generate module pages/pages --flat 
+```
+or
+```javascript
+ng g m pages/pages --flat 
 ```
 
 # Create service without file .spec
 ```javascript
-ng generate service services/movies --skipTests
+ng generate service services/movies --skip-tests
 ```
 or
 ```javascript
-ng g s services/movies --skipTests
+ng g s services/movies --skip-tests
 ```
 
 # Create interface (add at file name '.interface.ts')
@@ -82,11 +91,11 @@ ng g i interfaces/movie
 
 # Create pipe without file .spec
 ```javascript
-ng generate pipe pipes/noImage --skipTests
+ng generate pipe pipes/noImage --skip-tests
 ```
 or
 ```javascript
-ng g p pipes/noImage --skipTests
+ng g p pipes/noImage --skip-tests
 ```
 
 # Server local
