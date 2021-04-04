@@ -64,10 +64,11 @@ export class MovieComponent implements OnInit {
     this.moviesService.getCredits(this.id)
       .pipe(first())
       .subscribe((response: Cast[]) => {
-        this.cast = response;
+        this.cast = response.filter(
+          actor => actor.profile_path !== null
+        );
         this.loading = false;
-        console.log(this.cast);
-      })
+      });
   }
 
 }

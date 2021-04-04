@@ -14,6 +14,9 @@ export class NoImagePipe implements PipeTransform {
       if(movie.poster_path) {
         return url + movie.poster_path;
       }
+      else if(movie.profile_path) {
+        return url + movie.profile_path;
+      }
       else {
         return "assets/img/no-image-poster.jpg";
       }
