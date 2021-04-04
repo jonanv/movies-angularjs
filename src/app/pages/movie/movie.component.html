@@ -5,8 +5,6 @@
 <div *ngIf="movie && !loading"
       class="container main-container animated fadeIn fast">
 
-    <h1>{{ movie.original_title }}</h1>
-
     <div class="row">
 
         <div class="col-md-5">
@@ -16,15 +14,30 @@
         </div>
 
         <div class="col-md-7">
+            <h1>{{ movie.original_title }}</h1>
             <h3>Sinopsis</h3>
             <hr>
+
+            <div class="row">
+              <div class="col-md-8">
+                <star-rating [value]="movie.vote_average"
+                            totalstars="10"
+                            checkedcolor="gold"
+                            uncheckedcolor="grey"
+                            size="14px"
+                            readonly="false">
+                </star-rating>
+              </div>
+              <div class="col-md-4">
+                <p>Votos promedio: <span class="badge badge-primary">{{ movie.vote_average | number:'1.1' }}</span></p>
+              </div>
+            </div>
 
             <p>{{ movie.overview }}</p>
 
             <h4>Frase celebre</h4>
             <p>{{ movie.tagline }}</p>
             <p>Popularidad: <span class="badge badge-primary">{{ movie.popularity }}</span></p>
-            <p>Votos promedio: <span class="badge badge-primary">{{ movie.vote_average }}</span></p>
 
             <button class="btn btn-outline-danger"
                     type="button"

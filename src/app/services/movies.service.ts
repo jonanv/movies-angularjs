@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from "rxjs/operators";
+import { catchError, map, tap } from "rxjs/operators";
 import { Observable, of } from 'rxjs';
 import { Bilboard, Movie, Page } from '../interfaces/movie.interface';
 
@@ -95,6 +95,9 @@ export class MoviesService {
     return this.getQuery('movie', subquery)
       .pipe(map((response: Movie) => {
         return response;
+      }),
+      catchError(err => {
+        return of(err.error);
       }));
   }
 

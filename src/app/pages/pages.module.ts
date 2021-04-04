@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 // Modules
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { RatingModule } from 'ng-starrating';
 
 // Components
 import { HomeComponent } from './home/home.component';
@@ -27,7 +28,8 @@ import { SearchComponent } from './search/search.component';
     RouterModule,
     FormsModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    RatingModule
   ],
   exports: [
     HomeComponent,
