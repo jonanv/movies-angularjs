@@ -4,7 +4,8 @@
 
     <img [src]="movie | noImage:true"
           [alt]="movie.original_title"
-          class="img-fluid poster">
+          class="img-fluid poster"
+          (click)="onMovieClick(movie.id)">
 
     <div>
       <h3>{{ movie.title }}</h3>
