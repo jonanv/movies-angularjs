@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 // Imports
 import { RouterModule } from '@angular/router';
 import { RatingModule } from 'ng-starrating';
-
-// Pipes
-import { NoImagePipe } from '../pipes/no-image.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 // Components
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,7 +15,6 @@ import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-gr
 
 @NgModule({
   declarations: [
-    NoImagePipe,
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,
@@ -27,10 +24,10 @@ import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-gr
   imports: [
     CommonModule,
     RouterModule,
-    RatingModule
+    RatingModule,
+    PipesModule
   ],
   exports: [
-    NoImagePipe,
     NavbarComponent,
     LoadingComponent,
     GaleryComponent,

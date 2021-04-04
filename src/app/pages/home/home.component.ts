@@ -78,11 +78,13 @@ export class HomeComponent implements OnInit {
   }
 
   private getNowPlaying(): void {
+    this.loading = true;
     this.moviesService.getNowPlaying()
       .pipe(first())
       .subscribe((response: Bilboard[]) => {
         this.moviesSlideShow = response;
         this.moviesNowPlaying = response;
+        this.loading = false;
       });
   }
 

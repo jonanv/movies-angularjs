@@ -7,10 +7,16 @@ export class NoImagePipe implements PipeTransform {
 
   // TODO: Toco volver any para recibir cualquer tipo
   transform(movie: any, poster: boolean = false): unknown {
+    // http://image.tmdb.org/t/p/w500{{ movie.poster_path }}
     let url = "http://image.tmdb.org/t/p/w500";
 
     if (poster) {
-      return url + movie.poster_path;
+      if(movie.poster_path) {
+        return url + movie.poster_path;
+      }
+      else {
+        return "assets/img/no-image-poster.jpg";
+      }
     }
 
     if (movie.backdrop_path) {

@@ -7,13 +7,13 @@ import { FormsModule } from '@angular/forms';
 
 // Modules
 import { ComponentsModule } from '../components/components.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 // Components
 import { HomeComponent } from './home/home.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieComponent } from './movie/movie.component';
 import { SearchComponent } from './search/search.component';
-
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { SearchComponent } from './search/search.component';
     CommonModule,
     RouterModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   exports: [
     HomeComponent,
