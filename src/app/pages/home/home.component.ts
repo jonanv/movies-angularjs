@@ -25,11 +25,13 @@ export class HomeComponent implements OnInit {
     const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
     // console.log({position, max});
     if (position > max) {
+      if(this.moviesService.loading) { return; }
+
       console.log('llamar servicio');
       this.moviesService.getNowPlaying()
       .pipe(first())
-      .subscribe((response: Page) => {
-        this.moviesNowPlaying.push(...response.results);
+      .subscribe((response: Bilboard[]) => {
+        this.moviesNowPlaying.push(...response);
       });
     }
   }
@@ -78,9 +80,9 @@ export class HomeComponent implements OnInit {
   private getNowPlaying(): void {
     this.moviesService.getNowPlaying()
       .pipe(first())
-      .subscribe((response: Page) => {
-        this.moviesSlideShow = response.results;
-        this.moviesNowPlaying = response.results;
+      .subscribe((response: Bilboard[]) => {
+        this.moviesSlideShow = response;
+        this.moviesNowPlaying = response;
       });
   }
 

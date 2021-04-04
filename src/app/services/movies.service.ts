@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { map, tap } from "rxjs/operators";
-import { Observable } from 'rxjs';
-import { Bilboard, Movie } from '../interfaces/movie.interface';
+import { Observable, of } from 'rxjs';
+import { Bilboard, Movie, Page } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class MoviesService {
   private urlMoviedb: string = "https://api.themoviedb.org/3/";
   private language: string = "es-CO";
   private page: number = 1;
+  public loading: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -97,11 +98,20 @@ export class MoviesService {
       }));
   }
 
-  public getNowPlaying(): Observable<Object> {
+  public getNowPlaying(): Observable<Bilboard[]> {
+    if (this.loading) {
+      return of([]);
+    }
+
+    this.loading = true;
     let subquery = `${ this.page }`;
     return this.getQuery('now_playing', subquery)
-      .pipe(tap(() => {
+      .pipe(map((response: Page) => {
+        return response.results;
+      }),
+      tap(() => {
         this.page += 1;
+        this.loading = false;
       }));
   }
 }
