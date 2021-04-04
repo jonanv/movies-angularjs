@@ -114,4 +114,8 @@ export class MoviesService {
         this.loading = false;
       }));
   }
+
+  public resetNowPlaying() {
+    this.page = 1;
+  }
 }

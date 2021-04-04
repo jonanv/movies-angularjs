@@ -14,8 +14,8 @@ import { first } from 'rxjs/operators';
 export class MovieComponent implements OnInit {
 
   private id: number;
-  private page: string;
-  private search: string;
+  public page: string;
+  public search: string;
   public movie: Movie;
   public loading: boolean = false;
 

@@ -1,8 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
-import { Bilboard, Page } from '../../interfaces/movie.interface';
+import { Bilboard } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { Bilboard, Page } from '../../interfaces/movie.interface';
   styles: [
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   public bilboard: Bilboard[];
   public populars: Bilboard[];
@@ -86,6 +86,12 @@ export class HomeComponent implements OnInit {
         this.moviesNowPlaying = response;
         this.loading = false;
       });
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.moviesService.resetNowPlaying();
   }
 
 }
