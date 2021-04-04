@@ -1,14 +1,13 @@
 <div class="swiper-container">
   <div class="swiper-wrapper">
 
-    <div class="swiper-slide text-center"
+    <div class="swiper-slide text-center animate__animated animate__fadeIn"
           *ngFor="let actor of cast">
 
       <img [src]="actor | noImage:true"
             [alt]="actor.name"
             class="img-thumbnail">
         {{ actor.name }}
-
     </div>
 
   </div>
