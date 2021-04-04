@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Movie } from '../../interfaces/movie.interface';
 import { MoviesService } from '../../services/movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Cast } from '../../interfaces/credits.interface';
 
 @Component({
   selector: 'app-movie',
@@ -18,10 +19,12 @@ export class MovieComponent implements OnInit {
   public search: string;
   public movie: Movie;
   public loading: boolean = false;
+  public cast: Cast[];
 
   constructor(
     private moviesService: MoviesService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.activatedRoute.params
       .subscribe(response => {
@@ -33,6 +36,7 @@ export class MovieComponent implements OnInit {
         }
 
         this.loadMovie();
+        this.getCredits();
         // console.log(response);
       });
   }
@@ -46,9 +50,24 @@ export class MovieComponent implements OnInit {
       .pipe(first())
       .subscribe((response: Movie) => {
         // console.log(response);
+        if (!response) {
+          this.router.navigateByUrl('/home');
+          return;
+        }
         this.movie = response;
         this.loading = false;
       });
+  }
+
+  private getCredits(): void {
+    this.loading = true;
+    this.moviesService.getCredits(this.id)
+      .pipe(first())
+      .subscribe((response: Cast[]) => {
+        this.cast = response;
+        this.loading = false;
+        console.log(this.cast);
+      })
   }
 
 }

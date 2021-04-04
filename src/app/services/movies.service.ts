@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from "rxjs/operators";
 import { Observable, of } from 'rxjs';
 import { Bilboard, Movie, Page } from '../interfaces/movie.interface';
+import { Cast, Credits } from '../interfaces/credits.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,9 @@ export class MoviesService {
     }
     else if(query === 'now_playing') {
       url = `${ this.urlMoviedb }movie/${ query }?api_key=${ this.apikey }&language=${ this.language }&page=${ subquery }`;
+    }
+    else if (query === 'credits') {
+      url = `${ this.urlMoviedb }movie/${ subquery }/${ query }?api_key=${ this.apikey }&language=${ this.language }`;
     }
     else {
       url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
@@ -97,7 +101,7 @@ export class MoviesService {
         return response;
       }),
       catchError(err => {
-        return of(err.error);
+        return of(null);
       }));
   }
 
@@ -120,5 +124,16 @@ export class MoviesService {
 
   public resetNowPlaying() {
     this.page = 1;
+  }
+
+  public getCredits(id: number): Observable<Cast[]> {
+    let subquery = `${ id }`;
+    return this.getQuery('credits', subquery)
+      .pipe(map((response: Credits) => {
+        return response.cast;
+      }),
+      catchError(err => {
+        return of([]);
+      }));
   }
 }
