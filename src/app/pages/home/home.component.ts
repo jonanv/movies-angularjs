@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 import { MoviesService } from '../../services/movies.service';
 import { first } from 'rxjs/operators';
-import { Bilboard } from '../../interfaces/movie.interface';
+import { Bilboard, Page } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,27 @@ import { Bilboard } from '../../interfaces/movie.interface';
 })
 export class HomeComponent implements OnInit {
 
-  bilboard: Bilboard[];
-  populars: Bilboard[];
-  popularsChildren: Bilboard[];
-  loading: boolean = false;
+  public bilboard: Bilboard[];
+  public populars: Bilboard[];
+  public popularsChildren: Bilboard[];
+  public moviesSlideShow: Bilboard[];
+  public moviesNowPlaying: Bilboard[];
+  public loading: boolean = false;
+
+  @HostListener('window:scroll', ['$event'])
+  public onScroll(event: any): void {
+    const position = (document.documentElement.scrollTop || document.body.scrollTop) + 1300;
+    const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
+    // console.log({position, max});
+    if (position > max) {
+      console.log('llamar servicio');
+      this.moviesService.getNowPlaying()
+      .pipe(first())
+      .subscribe((response: Page) => {
+        this.moviesNowPlaying.push(...response.results);
+      });
+    }
+  }
 
   constructor(
     private moviesService: MoviesService
@@ -25,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.getBillboard();
     this.getPopular();
     this.getPopularChildren();
+    this.getNowPlaying();
   }
 
   private getBillboard(): void {
@@ -54,6 +72,15 @@ export class HomeComponent implements OnInit {
       .subscribe((response: Bilboard[]) => {
         this.popularsChildren = response;
         this.loading = false;
+      });
+  }
+
+  private getNowPlaying(): void {
+    this.moviesService.getNowPlaying()
+      .pipe(first())
+      .subscribe((response: Page) => {
+        this.moviesSlideShow = response.results;
+        this.moviesNowPlaying = response.results;
       });
   }
 

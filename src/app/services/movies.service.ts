@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { Observable } from 'rxjs';
 import { Bilboard, Movie } from '../interfaces/movie.interface';
 
@@ -13,6 +13,7 @@ export class MoviesService {
   private apikey: string = "eeba7a481f04ca04446e13ca95af978d";
   private urlMoviedb: string = "https://api.themoviedb.org/3/";
   private language: string = "es-CO";
+  private page: number = 1;
 
   constructor(
     private http: HttpClient,
@@ -22,6 +23,9 @@ export class MoviesService {
     let url = '';
     if(query === 'movie') {
       url = `${ this.urlMoviedb }${ query }/${ subquery }?api_key=${ this.apikey }&language=${ this.language }`;
+    }
+    else if(query === 'now_playing') {
+      url = `${ this.urlMoviedb }movie/${ query }?api_key=${ this.apikey }&language=${ this.language }&page=${ subquery }`;
     }
     else {
       url = `${ this.urlMoviedb }${ query }/movie?api_key=${ this.apikey }&language=${ this.language }&page=1${ subquery }`;
@@ -90,6 +94,14 @@ export class MoviesService {
     return this.getQuery('movie', subquery)
       .pipe(map((response: Movie) => {
         return response;
+      }));
+  }
+
+  public getNowPlaying(): Observable<Object> {
+    let subquery = `${ this.page }`;
+    return this.getQuery('now_playing', subquery)
+      .pipe(tap(() => {
+        this.page += 1;
       }));
   }
 }
